@@ -9,18 +9,12 @@ function writeFile(path, text) {
   f.Close();
 }
 
-function deleteFile(path) {
-  if (fso.fileExists(path)) {
-    fso.DeleteFile(path);
-  }
-}
-
 log();
 
-fetchFile(rawBase + 'cowboy-patch-1/src/mod-loader/mod-loader.js', 'mod-loader\\mod-loader.js');
+fetchAsset('mod-loader/mod-loader.js');
 
 if (createDir('mods')) {
-  fetchFile(rawBase + 'cowboy-patch-1/src/mods/sample.js', 'mods\\sample.js');
+  fetchAsset('mods/sample.js');
   log('> Created mod directory and sample mod.');
   log();
 }
