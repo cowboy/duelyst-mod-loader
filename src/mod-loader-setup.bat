@@ -1,7 +1,7 @@
 <!-- : Begin batch script
 @echo off
 cscript //nologo "%~f0?.wsf"
-TIMEOUT /T 10
+TIMEOUT /T 30
 exit /b
 
 ----- Begin wsf script --->
