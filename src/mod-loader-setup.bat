@@ -23,7 +23,13 @@ log();
 
 var fso = new ActiveXObject('Scripting.FileSystemObject');
 
-function fetchFile(url, path) {
+function assetUrl(path) {
+  var rawBase = 'https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/';
+  var branch = 'cowboy-patch-1';
+  return rawBase + branch + '/src/' + path;
+}
+
+function fetchUrl(url, path) {
   log('Downloading:', url);
   var xmlHttp = new ActiveXObject('MSXML2.XMLHTTP');
   xmlHttp.open('GET', url, false);
@@ -37,6 +43,12 @@ function fetchFile(url, path) {
     stream.saveToFile(path, 2);
     stream.close();
   }
+}
+
+function fetchAsset(path) {
+  var url = assetUrl(path);
+  var filePath = path.replace(/\//g, '\\');
+  fetchUrl(url, filePath);
 }
 
 function readFile(path) {
@@ -76,10 +88,7 @@ try {
 }
 
 createDir('mod-loader');
-var setupScript = 'mod-loader\\setup.js'
-var rawBase = 'https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/';
-var rawMaster = rawBase + 'master/';
-fetchFile(rawMaster + 'src/mod-loader/setup.js', setupScript);
-eval(readFile(setupScript));
+fetchAsset('mod-loader/setup.js');
+eval(readFile('mod-loader\\setup.js'));
 
 </script></job>
