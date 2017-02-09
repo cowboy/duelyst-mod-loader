@@ -36,13 +36,10 @@ function fetchMods() {
   deleteFile(temp);
 }
 
-log();
-
 fetchAsset('mod-loader/mod-loader.js');
 
 if (createDir('mods')) {
   fetchMods();
-  log();
 }
 
 var base = 'v' + installs.duelyst.version + '\\resources\\app\\src\\';
