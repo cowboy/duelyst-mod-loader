@@ -2,6 +2,8 @@
 // Copyright (c) 2017 "Cowboy" Ben Alman
 // https://github.com/cowboy/duelyst-mod-loader
 
+var MODS_BRANCH = 'cowboy-patch-1';
+
 function writeFile(path, text) {
   log('Writing file:', path);
   var f = fso.CreateTextFile(path, true);
@@ -9,11 +11,18 @@ function writeFile(path, text) {
   f.Close();
 }
 
+function deleteFile(path) {
+  log('Deleting file:', path);
+  if (fso.fileExists(path)) {
+    fso.deleteFile(path);
+  }
+}
+
 function getTempFilePath() {
   return fso.GetSpecialFolder(2) + '\\' + fso.GetTempName();
 }
 
-var fetchMod = getFetcher('https://raw.githubusercontent.com/duelyst-mods/mods/cowboy-patch-1');
+var fetchMod = getFetcher('https://raw.githubusercontent.com/duelyst-mods/mods/' + MODS_BRANCH);
 
 function fetchMods() {
   var temp = getTempFilePath();
@@ -21,9 +30,10 @@ function fetchMods() {
   var mods = readJsonFile(temp);
   for (var key in mods) {
     var mod = mods[key];
-    log('Fetching', mod.name, '(' + mod.description + ')');
+    log('Fetching mod:', mod.name, '(' + mod.description + ')');
     fetchMod('mods/' + key + '.js');
   }
+  deleteFile(temp);
 }
 
 log();
