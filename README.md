@@ -22,6 +22,7 @@
 ## Notes
 
 * Only tested in Windows 10
+* Mods can be found here: https://github.com/duelyst-mods/mods
 
 ## Todos
 
@@ -39,4 +40,4 @@ File an issue! Create a PR! Ping me in the [Duelyst discord server](https://disc
 
 Copyright (c) 2017 "Cowboy" Ben Alman  
 MIT License  
-https://github.com/cowboy/duelyst-mod-loader
+https://github.com/duelyst-mods/mod-loader
