@@ -11,21 +11,21 @@ function log() {
   WScript.Echo([].slice.call(arguments).join(' '));
 }
 
-log('================================================');
-log('=             Duelyst mod loader v1            =');
-log('================================================');
-log('=    Copyright (c) 2017 "Cowboy" Ben Alman     =');
-log('================================================');
-log('= https://github.com/cowboy/duelyst-mod-loader =');
-log('================================================');
+log('==============================================');
+log('=            Duelyst mod loader v1           =');
+log('==============================================');
+log('=   Copyright (c) 2017 "Cowboy" Ben Alman    =');
+log('==============================================');
+log('= https://github.com/duelyst-mods/mod-loader =');
+log('==============================================');
 
 log();
 
 var fso = new ActiveXObject('Scripting.FileSystemObject');
 
 function assetUrl(path) {
-  var rawBase = 'https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/';
-  var branch = 'master';
+  var rawBase = 'https://raw.githubusercontent.com/duelyst-mods/mod-loader/';
+  var branch = 'cowboy-patch-3';
   return rawBase + branch + '/' + path;
 }
 
