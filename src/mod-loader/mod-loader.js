@@ -1,7 +1,6 @@
-// in console:
-// eval(fs.readFileSync('../bootstrap.js', 'utf8'))
-// in index.html:
-// <script src="../../../../bootstrap.js" crossorigin></script>
+// Duelyst mod loader
+// Copyright (c) 2017 "Cowboy" Ben Alman
+// https://github.com/cowboy/duelyst-mod-loader
 
 const MOD_DIR = '../mods';
 
