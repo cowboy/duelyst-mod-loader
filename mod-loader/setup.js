@@ -53,20 +53,20 @@ var script = '<script id=modloader src="../../../../mod-loader/mod-loader.js" cr
 var newHtml = html.replace(/<script( id=modloader)?[\s\S]*?<\/script>/, function(match, isModloader) {
   if (isModloader) {
     if (match === script) {
-      log('> Up-to-date modloader script detected.');
+      log('> Up-to-date mod loader script tag detected.');
       return match;
     }
-    log('> Out-of-date modloader script detected, updating...');
+    log('> Out-of-date mod loader script tag detected, updating...');
     return script;
   }
-  log('> No modloader script detected, adding...');
+  log('> No mod loader script tag detected, adding...');
   return script + match;
 })
 
 if (newHtml !== html) {
-  log('Creating backup...');
+  log('Creating backup of Duelyst index...');
   writeFile(bak, html);
-  log('Updating index...');
+  log('Updating Duelyst index...');
   writeFile(src, newHtml);
 }
 else {
