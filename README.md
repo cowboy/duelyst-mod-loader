@@ -1,4 +1,4 @@
-# duelyst-mod-loader
+# # Duelyst Mod Loader
 > A mod loader for Duelyst. WIP.
 
 ## Usage
