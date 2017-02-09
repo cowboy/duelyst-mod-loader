@@ -1,8 +1,3 @@
-// in console:
-// eval(fs.readFileSync('../bootstrap.js', 'utf8'))
-// in index.html:
-// <script src="../../../../bootstrap.js" crossorigin></script>
-
 const MOD_DIR = '../mods';
 
 const fs = require('fs');
