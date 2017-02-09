@@ -9,12 +9,14 @@ function writeFile(path, text) {
   f.Close();
 }
 
+var fetchMod = getFetcher('https://raw.githubusercontent.com/duelyst-mods/mods/cowboy-patch-1');
+
 log();
 
 fetchAsset('mod-loader/mod-loader.js');
 
 if (createDir('mods')) {
-  fetchAsset('mods/sample.js');
+  fetchMod('mods.json');
   log('> Created mod directory and sample mod.');
   log();
 }
