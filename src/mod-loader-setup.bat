@@ -76,10 +76,10 @@ try {
 }
 
 createDir('mod-loader');
-var nextScript = 'mod-loader\\setup.js'
+var setupScript = 'mod-loader\\setup.js'
 var rawBase = 'https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/';
 var rawMaster = rawBase + 'master/';
-//fetchFile(rawMaster + 'src/mod-loader/setup.js', nextScript);
-eval(readFile(nextScript));
+fetchFile(rawMaster + 'src/mod-loader/setup.js', setupScript);
+eval(readFile(setupScript));
 
 </script></job>
