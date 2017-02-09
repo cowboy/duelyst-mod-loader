@@ -12,7 +12,7 @@ function log() {
 }
 
 log('================================================');
-log('=              Duelyst mod loader              =');
+log('=             Duelyst mod loader v1            =');
 log('================================================');
 log('=    Copyright (c) 2017 "Cowboy" Ben Alman     =');
 log('================================================');
@@ -47,6 +47,12 @@ function readFile(path) {
   return result;
 }
 
+function readJsonFile(path) {
+  var json = readFile(path);
+  eval('var obj = ' + json);
+  return obj;
+}
+
 function createDir(path) {
   if (!fso.FolderExists(path)) {
     log('Creating directory:', path);
@@ -58,9 +64,22 @@ function createDir(path) {
 log('Running initial setup!');
 log();
 
+try {
+  var installs = readJsonFile('..\\installs.json');
+  log('> Duelyst version', installs.duelyst.version);
+  log();
+} catch (err) {
+  log();
+  log('Error parsing Duelyst "installs.json" file.');
+  log('Ensure this .bat file is located in the ".counterplay\\duelyst" directory.');
+  WScript.quit(1);
+}
+
 createDir('mod-loader');
 var nextScript = 'mod-loader\\setup.js'
-fetchFile('https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/master/src/mod-loader/setup.js', nextScript);
+var rawBase = 'https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/';
+var rawMaster = rawBase + 'master/';
+//fetchFile(rawMaster + 'src/mod-loader/setup.js', nextScript);
 eval(readFile(nextScript));
 
 </script></job>
