@@ -21,7 +21,15 @@
 
 ## Notes
 
-* Tested in Windows 10
+* Only tested in Windows 10
+
+## Todos
+
+* Create a hooks system for mods to hook into game functions
+* Create an events system for mods to run code when game events trigger (mulligan, turn start, game end, etc)
+* Ensure it works with Steam version
+* Create a Mac OS (Linux?) version
+* Actually make some mods!
 
 ## Contributing
 
