@@ -2,7 +2,7 @@
 // Copyright (c) 2017 "Cowboy" Ben Alman
 // https://github.com/cowboy/duelyst-mod-loader
 
-var MODS_BRANCH = 'cowboy-patch-1';
+var MODS_BRANCH = 'master';
 
 function writeFile(path, text) {
   log('Writing file:', path);
