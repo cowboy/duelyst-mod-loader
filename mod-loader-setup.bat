@@ -25,8 +25,8 @@ var fso = new ActiveXObject('Scripting.FileSystemObject');
 
 function assetUrl(path) {
   var rawBase = 'https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/';
-  var branch = 'master';
-  return rawBase + branch + '/src/' + path;
+  var branch = 'cowboy-patch-2';
+  return rawBase + branch + '/' + path;
 }
 
 function fetchUrl(url, path) {
