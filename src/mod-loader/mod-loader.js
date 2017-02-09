@@ -1,3 +1,7 @@
+// Duelyst mod loader
+// Copyright (c) 2017 "Cowboy" Ben Alman
+// https://github.com/cowboy/duelyst-mod-loader
+
 const MOD_DIR = '../mods';
 
 const fs = require('fs');
