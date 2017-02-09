@@ -3,7 +3,7 @@
 
 ## Usage
 
-1. Download [mod-loader-setup.bat](https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/master/mod-loader-setup.bat).
+1. Download [mod-loader-setup.bat](https://raw.githubusercontent.com/duelyst-mods/mod-loader/master/mod-loader-setup.bat).
  * (Right-click that link, then choose "Save link as...")
  * Save it into your `C:\Users\YOUR_USER_NAME\.counterplay\duelyst\` directory.
 1. Double-click the downloaded `mod-loader-setup` file to run it.

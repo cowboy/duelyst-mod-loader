@@ -1,33 +1,30 @@
 <!-- : Begin batch script
 @echo off
 cscript //nologo "%~f0?.wsf"
-TIMEOUT /T 30
+echo.
+pause
 exit /b
 
 ----- Begin wsf script --->
 <job><script language="JScript">
 
+var MODLOADER_BRANCH = 'master';
+
 function log() {
   WScript.Echo([].slice.call(arguments).join(' '));
 }
 
-log('================================================');
-log('=             Duelyst mod loader v1            =');
-log('================================================');
-log('=    Copyright (c) 2017 "Cowboy" Ben Alman     =');
-log('================================================');
-log('= https://github.com/cowboy/duelyst-mod-loader =');
-log('================================================');
+log('==============================================');
+log('=            Duelyst mod loader v1           =');
+log('==============================================');
+log('=   Copyright (c) 2017 "Cowboy" Ben Alman    =');
+log('==============================================');
+log('= https://github.com/duelyst-mods/mod-loader =');
+log('==============================================');
 
 log();
 
 var fso = new ActiveXObject('Scripting.FileSystemObject');
-
-function assetUrl(path) {
-  var rawBase = 'https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/';
-  var branch = 'master';
-  return rawBase + branch + '/' + path;
-}
 
 function fetchUrl(url, path) {
   log('Downloading:', url);
@@ -40,16 +37,23 @@ function fetchUrl(url, path) {
     stream.type = 1;
     stream.write(xmlHttp.ResponseBody);
     stream.position = 0;
+    log('Writing file:', path);
     stream.saveToFile(path, 2);
     stream.close();
   }
 }
 
-function fetchAsset(path) {
-  var url = assetUrl(path);
-  var filePath = path.replace(/\//g, '\\');
-  fetchUrl(url, filePath);
+function getFetcher(baseUrl) {
+  return function(path, filePath) {
+    var url = baseUrl + '/' + path;
+    if (!filePath) {
+      filePath = path.replace(/\//g, '\\');
+    }
+    fetchUrl(url, filePath);
+  }
 }
+
+var fetchAsset = getFetcher('https://raw.githubusercontent.com/cowboy/duelyst-mod-loader/' + MODLOADER_BRANCH);
 
 function readFile(path) {
   log('Reading file:', path);
@@ -73,12 +77,12 @@ function createDir(path) {
   }
 }
 
-log('Running initial setup!');
+log('Running setup!');
 log();
 
 try {
   var installs = readJsonFile('..\\installs.json');
-  log('> Duelyst version', installs.duelyst.version);
+  log('> Duelyst version', installs.duelyst.version, 'detected');
   log();
 } catch (err) {
   log();
