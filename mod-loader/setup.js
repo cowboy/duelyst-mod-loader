@@ -9,15 +9,29 @@ function writeFile(path, text) {
   f.Close();
 }
 
+function getTempFilePath() {
+  return fso.GetSpecialFolder(2) + '\\' + fso.GetTempName();
+}
+
 var fetchMod = getFetcher('https://raw.githubusercontent.com/duelyst-mods/mods/cowboy-patch-1');
+
+function fetchMods() {
+  var temp = getTempFilePath();
+  fetchMod('mods.json', temp);
+  var mods = readJsonFile(temp);
+  for (var key in mods) {
+    var mod = mods[key];
+    log('Fetching', mod.name, '(' + mod.description + ')');
+    fetchMod('mods/' + key + '.js');
+  }
+}
 
 log();
 
 fetchAsset('mod-loader/mod-loader.js');
 
 if (createDir('mods')) {
-  fetchMod('mods.json');
-  log('> Created mod directory and sample mod.');
+  fetchMods();
   log();
 }
 
